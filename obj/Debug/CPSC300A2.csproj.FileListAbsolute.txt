@@ -1,0 +1,15 @@
+D:\Important Files\UNBC Computer Science\CPSC300 Software Engineering\CPSC300A2\CPSC300A2\CPSC300A2\bin\Debug\CPSC300A2.exe.config
+D:\Important Files\UNBC Computer Science\CPSC300 Software Engineering\CPSC300A2\CPSC300A2\CPSC300A2\bin\Debug\CPSC300A2.exe
+D:\Important Files\UNBC Computer Science\CPSC300 Software Engineering\CPSC300A2\CPSC300A2\CPSC300A2\bin\Debug\CPSC300A2.pdb
+D:\Important Files\UNBC Computer Science\CPSC300 Software Engineering\CPSC300A2\CPSC300A2\CPSC300A2\obj\Debug\CPSC300A2.csprojResolveAssemblyReference.cache
+D:\Important Files\UNBC Computer Science\CPSC300 Software Engineering\CPSC300A2\CPSC300A2\CPSC300A2\obj\Debug\MainWindow.g.cs
+D:\Important Files\UNBC Computer Science\CPSC300 Software Engineering\CPSC300A2\CPSC300A2\CPSC300A2\obj\Debug\App.g.cs
+D:\Important Files\UNBC Computer Science\CPSC300 Software Engineering\CPSC300A2\CPSC300A2\CPSC300A2\obj\Debug\CPSC300A2_MarkupCompile.cache
+D:\Important Files\UNBC Computer Science\CPSC300 Software Engineering\CPSC300A2\CPSC300A2\CPSC300A2\obj\Debug\CPSC300A2_MarkupCompile.lref
+D:\Important Files\UNBC Computer Science\CPSC300 Software Engineering\CPSC300A2\CPSC300A2\CPSC300A2\obj\Debug\MainWindow.baml
+D:\Important Files\UNBC Computer Science\CPSC300 Software Engineering\CPSC300A2\CPSC300A2\CPSC300A2\obj\Debug\CPSC300A2.g.resources
+D:\Important Files\UNBC Computer Science\CPSC300 Software Engineering\CPSC300A2\CPSC300A2\CPSC300A2\obj\Debug\CPSC300A2.Properties.Resources.resources
+D:\Important Files\UNBC Computer Science\CPSC300 Software Engineering\CPSC300A2\CPSC300A2\CPSC300A2\obj\Debug\CPSC300A2.csproj.GenerateResource.Cache
+D:\Important Files\UNBC Computer Science\CPSC300 Software Engineering\CPSC300A2\CPSC300A2\CPSC300A2\obj\Debug\CPSC300A2.csproj.CoreCompileInputs.cache
+D:\Important Files\UNBC Computer Science\CPSC300 Software Engineering\CPSC300A2\CPSC300A2\CPSC300A2\obj\Debug\CPSC300A2.exe
+D:\Important Files\UNBC Computer Science\CPSC300 Software Engineering\CPSC300A2\CPSC300A2\CPSC300A2\obj\Debug\CPSC300A2.pdb
