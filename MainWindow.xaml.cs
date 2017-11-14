@@ -79,6 +79,11 @@ namespace CPSC300A2
                 analysisTextBox.Text = InputOutput.PrintColumnNames();
                 analysisTextBox.AppendText(InputOutput.CreateSummaryReport());
 
+                int start_index = analysisTextBox.Text.IndexOf("Total");
+
+                analysisTextBox.Focus();
+                analysisTextBox.Select(start_index, 80);
+
                 if (SimulationAlgorithm.GetOutputString().Equals(""))
                 {
                     outputTextBox.Text = "";

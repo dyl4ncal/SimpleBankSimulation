@@ -45,7 +45,9 @@ namespace CPSC300A2.Simulation_Code
         {
             if (IsEmpty())
             {
-                throw new Exception("Can't Dequeue. Queue is empty.");
+                System.Windows.MessageBox.Show("You are attempting to run the simulation again.\nHowever, the data has already been consumed. You may re-execute the program.");
+
+                Environment.Exit(1);
             }
             Node queueFront = new Node(head.GetArrivalTime(), head.GetCurrentTime(),
                 head.GetServiceTime(), head.GetCustomerNumber(), head.GetEventType(), head.GetDepartureTime(), head.GetWaitTime());

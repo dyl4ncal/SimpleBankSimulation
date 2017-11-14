@@ -95,8 +95,8 @@ namespace CPSC300A2.Simulation_Code
             }
             else
             {
-                string s = "Customer " + n.GetCustomerNumber() + " finishes at time " + n.GetDepartureTime()
-                + ". No more customers are at the bank.";
+                string s = "Customer " + n.GetCustomerNumber() + " finishes at time " + n.GetDepartureTime() + "."
+                + Environment.NewLine + "No more customers are at the bank.";
                 return s;
             }
         }
