@@ -15,6 +15,7 @@ namespace CPSC300A2.Simulation_Code
         private static int totalCustomers = 0;
 
         //Method to read in one line of the data file at a time.
+        //This is where the validity of the data file is also checked.
         public static string ReadDataLine()
         {
             try
@@ -83,6 +84,7 @@ namespace CPSC300A2.Simulation_Code
             }
         }
 
+        //Returns a string to be displayed as the start label.
         public static string GetSimStartLabel()
         {
             string s = "-----------------------------"
@@ -92,6 +94,7 @@ namespace CPSC300A2.Simulation_Code
             return s;
         }
 
+        //Returns a string to be displayed as the finished label.
         public static string GetSimFinishedLabel()
         {
             string s = "-------------------------" + Environment.NewLine
@@ -111,22 +114,24 @@ namespace CPSC300A2.Simulation_Code
             return columns;
         }
 
-        //This method fills out the summary report with information.
+        //This method fills out the simulation analysis summary report with information.
         public static string CreateSummaryReport()
         {
             string results = "";
             for (int i = 0; i < totalCustomers; i++)
             {
                 Node n = queue.Dequeue();
-                /*("%8s %10s %9s %12s %11s %11s %9s*/
-                results = string.Concat(results, "            " + n.GetCustomerNumber()
-                        + "           " + n.GetArrivalTime() + "           " + n.GetServiceTime()
-                        + "               " + n.GetDepartureTime() + "            " + n.GetWaitTime() + "\n");
+
+                string resultLine = String.Format("{0,8}{1,15}{2,13}{3,15}{4,16}" ,n.GetCustomerNumber()
+                        , n.GetArrivalTime(), n.GetServiceTime()
+                        , n.GetDepartureTime(), n.GetWaitTime() + "\n");
+
+                results = string.Concat(results, resultLine);
 
                 totalWaitTime += n.GetWaitTime();  
             }
-            results = string.Concat(results, "\nTotal patients treated: " + Events.GetTotalCustomerCount() + "\n");
-            results = string.Concat(results, "Average waiting time per patient: " + CalculateAverageWaitingTime() + "\n-----");
+            results = string.Concat(results, "\nTotal customers helped: " + Events.GetTotalCustomerCount() + "\n");
+            results = string.Concat(results, "Average waiting time per customer: " + CalculateAverageWaitingTime() + "\n-----");
             return results;
         }
 
@@ -136,7 +141,7 @@ namespace CPSC300A2.Simulation_Code
         {
             double averageWaitTime = (totalWaitTime / totalCustomers);
 
-            String s = String.Format("{0:.#####}", averageWaitTime);
+            String s = String.Format("{0:.######}", averageWaitTime);
 
             averageWaitTime = Convert.ToDouble(s);
             return averageWaitTime;

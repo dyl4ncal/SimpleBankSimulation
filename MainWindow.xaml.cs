@@ -5,9 +5,20 @@ using CPSC300A2.Simulation_Code;
 
 namespace CPSC300A2
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
+    /* This software is a simple event-driven bank simulation.
+     * It was written for UNBC CPSC300 "Software Engineering"
+     * on November 13th, 2017.
+     * 
+     * The purpose of this simulation is to model how customers
+     * at a bank are served by a teller from a line up. The output
+     * produced by the simulation shows the events that occur, along
+     * with some additional information. The analysis of the simulation
+     * shows the statistics of each customer and then displays the
+     * calculated average time each customer spends waiting in the line
+     * up for service.
+     * 
+     * Author: Dylan Calado
+     */
     public partial class MainWindow : Window
     {
         private OpenFileDialog searchWindow = new OpenFileDialog();
@@ -19,6 +30,7 @@ namespace CPSC300A2
             InitializeComponent();
         }
 
+        //Opens the file search dialog box to select a data file.
         private void FileSearchClick(object sender, RoutedEventArgs e)
         {
             searchWindow.CheckFileExists = true;
@@ -43,12 +55,14 @@ namespace CPSC300A2
             }
         }
 
+        //Exports the output of the simulation the the users Desktop.
         private void ExportClick(object sender, RoutedEventArgs e)
         {
             InputOutput.ExportResult(outputTextBox);
             outputTextBox.AppendText(Environment.NewLine + "Output has been exported to Desktop!" + Environment.NewLine);
         }
 
+        //Performs the simulation and displays the results on a GUI.
         private void RunSimulationClick(object sender, RoutedEventArgs e)
         {
             outputTextBox.IsReadOnly = true;
@@ -72,6 +86,7 @@ namespace CPSC300A2
             }
         }
 
+        //Returns the data file selected by the user.
         public static System.IO.StreamReader GetFile()
         {
             return file;

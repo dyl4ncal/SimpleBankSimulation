@@ -8,6 +8,7 @@ namespace CPSC300A2.Simulation_Code
         private static int totalCustomerCount = 0;
 
         //This method reads a single line of the data file and creates a new Node.
+        //This process represents an arrival event at the bank.
         public static Node ArrivalEvent(Node n)
         {
             String info = InputOutput.ReadDataLine();
@@ -48,6 +49,7 @@ namespace CPSC300A2.Simulation_Code
             }
         }
 
+        //This represents a departure from the bank.
         public static Node DepartureEvent(Node n)
         {
             n.SetEventType("departs");
