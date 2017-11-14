@@ -58,7 +58,7 @@ namespace CPSC300A2
         //Exports the output of the simulation the the users Desktop.
         private void ExportClick(object sender, RoutedEventArgs e)
         {
-            InputOutput.ExportResult(outputTextBox);
+            InputOutput.ExportResult(outputTextBox, analysisTextBox);
             outputTextBox.AppendText(Environment.NewLine + "Output has been exported to Desktop!" + Environment.NewLine);
         }
 

@@ -50,7 +50,7 @@ namespace CPSC300A2.Simulation_Code
         }
 
         //Method to export the simulation output to a text file.
-        public static void ExportResult(TextBox outputText)
+        public static void ExportResult(TextBox outputText, TextBox analysis)
         {
             string filePath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
 
@@ -73,7 +73,8 @@ namespace CPSC300A2.Simulation_Code
                     }
                     else
                     {
-                        Byte[] output = new UTF8Encoding(true).GetBytes(GetSimStartLabel() + SimulationAlgorithm.GetOutputString() + GetSimFinishedLabel());
+                        Byte[] output = new UTF8Encoding(true).GetBytes(GetSimStartLabel()
+                            + SimulationAlgorithm.GetOutputString() + GetSimFinishedLabel() + analysis.Text);
                         fs.Write(output, 0, output.Length);
                     }
                 }
@@ -106,10 +107,10 @@ namespace CPSC300A2.Simulation_Code
         //This method displays the analysis column names in the GUI.
         public static string PrintColumnNames()
         {
-            string columns = "Summary Report:\n" +
-            "\nCustomer   Arrival   Service   Departure   Waiting\n"
-            + "  Number      Time      Time           Time        Time\n"
-            + "-----------   -------   --------   ----------    --------\n";
+            string columns = Environment.NewLine + "Summary Report:" + Environment.NewLine + Environment.NewLine
+            + "Customer      Arrival      Service      Departure      Waiting" + Environment.NewLine
+            + "  Number         Time         Time              Time           Time" + Environment.NewLine
+            + "-----------      -------      --------      ----------       --------" + Environment.NewLine;
 
             return columns;
         }
@@ -122,16 +123,16 @@ namespace CPSC300A2.Simulation_Code
             {
                 Node n = queue.Dequeue();
 
-                string resultLine = String.Format("{0,8}{1,15}{2,13}{3,15}{4,16}" ,n.GetCustomerNumber()
+                string resultLine = String.Format("{0,0}{1,22}{2,14}{3,17}{4,21}" ,n.GetCustomerNumber()
                         , n.GetArrivalTime(), n.GetServiceTime()
-                        , n.GetDepartureTime(), n.GetWaitTime() + "\n");
+                        , n.GetDepartureTime(), n.GetWaitTime() + Environment.NewLine);
 
                 results = string.Concat(results, resultLine);
 
                 totalWaitTime += n.GetWaitTime();  
             }
-            results = string.Concat(results, "\nTotal customers helped: " + Events.GetTotalCustomerCount() + "\n");
-            results = string.Concat(results, "Average waiting time per customer: " + CalculateAverageWaitingTime() + "\n-----");
+            results = string.Concat(results, Environment.NewLine + "Total customers helped: " + Events.GetTotalCustomerCount() + Environment.NewLine);
+            results = string.Concat(results, "Average waiting time per customer: " + CalculateAverageWaitingTime() + Environment.NewLine + "-----");
             return results;
         }
 
