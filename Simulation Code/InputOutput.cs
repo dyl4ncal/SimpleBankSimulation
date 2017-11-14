@@ -49,7 +49,7 @@ namespace CPSC300A2.Simulation_Code
             }
         }
 
-        //Method to export the simulation output to a text file.
+        //Method to export the simulation output & analysis to a text file.
         public static void ExportResult(TextBox outputText, TextBox analysis)
         {
             string filePath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
