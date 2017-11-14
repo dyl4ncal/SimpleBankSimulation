@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CPSC300A2.Simulation_Code
 {
@@ -69,7 +65,7 @@ namespace CPSC300A2.Simulation_Code
                        
                         customerLine.Dequeue();
 
-                            recordTable.Enqueue(n.GetArrivalTime(), n.GetCurrentTime(), n.GetServiceTime(), n.GetCustomerNumber(), n.GetEventType(), n.GetDepartureTime(), n.GetWaitTime());
+                        recordTable.Enqueue(n.GetArrivalTime(), n.GetCurrentTime(), n.GetServiceTime(), n.GetCustomerNumber(), n.GetEventType(), n.GetDepartureTime(), n.GetWaitTime());
 
                         if(!customerLine.IsEmpty())
                         {
@@ -85,6 +81,11 @@ namespace CPSC300A2.Simulation_Code
         public static string GetOutputString()
         {
             return output;
+        }
+
+        public static Queue GetRecordTable()
+        {
+            return recordTable;
         }
 
         public static string GetCustomerAtTellerNumber()

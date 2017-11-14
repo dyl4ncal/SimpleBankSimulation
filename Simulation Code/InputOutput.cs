@@ -1,9 +1,7 @@
 ﻿using System;
 using System.IO;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Controls;
 
 namespace CPSC300A2.Simulation_Code
@@ -12,13 +10,15 @@ namespace CPSC300A2.Simulation_Code
     {
         private static string dataLine;
         private static int outputFileCount = 0;
+        private static Queue queue = SimulationAlgorithm.GetRecordTable();
+        private static double totalWaitTime = 0;
+        private static int totalCustomers = 0;
 
         //Method to read in one line of the data file at a time.
         public static string ReadDataLine()
         {
             try
             {
-
                 char[] f = { ' ', '\n', '\r' };
                 if ((dataLine = MainWindow.GetFile().ReadLine()) != null)
                 {
@@ -26,6 +26,7 @@ namespace CPSC300A2.Simulation_Code
 
                     if (textData.Length == 2 && textData[0].All(char.IsDigit) && textData[1].All(char.IsDigit))
                     {
+                        totalCustomers++;
                         return dataLine;
                     }
                     else
@@ -42,6 +43,7 @@ namespace CPSC300A2.Simulation_Code
             {
                 System.Windows.MessageBox.Show("Invalid data file. Simulation has been aborted.\n" +
                     "Please re-execute the program and select a valid data file.");
+
                 return "Bad Input";
             }
         }
@@ -97,6 +99,49 @@ namespace CPSC300A2.Simulation_Code
                 + "-------------------------";
             return s;
         }
+
+        //This method displays the analysis column names in the GUI.
+        public static string PrintColumnNames()
+        {
+            string columns = "Summary Report:\n" +
+            "\nCustomer   Arrival   Service   Departure   Waiting\n"
+            + "  Number      Time      Time           Time        Time\n"
+            + "-----------   -------   --------   ----------    --------\n";
+
+            return columns;
+        }
+
+        //This method fills out the summary report with information.
+        public static string CreateSummaryReport()
+        {
+            string results = "";
+            for (int i = 0; i < totalCustomers; i++)
+            {
+                Node n = queue.Dequeue();
+                /*("%8s %10s %9s %12s %11s %11s %9s*/
+                results = string.Concat(results, "            " + n.GetCustomerNumber()
+                        + "           " + n.GetArrivalTime() + "           " + n.GetServiceTime()
+                        + "               " + n.GetDepartureTime() + "            " + n.GetWaitTime() + "\n");
+
+                totalWaitTime += n.GetWaitTime();  
+            }
+            results = string.Concat(results, "\nTotal patients treated: " + Events.GetTotalCustomerCount() + "\n");
+            results = string.Concat(results, "Average waiting time per patient: " + CalculateAverageWaitingTime() + "\n-----");
+            return results;
+        }
+
+        //This method calculates the average waiting time of all the 
+        //customers who visited the bank.
+        public static double CalculateAverageWaitingTime()
+        {
+            double averageWaitTime = (totalWaitTime / totalCustomers);
+
+            String s = String.Format("{0:.#####}", averageWaitTime);
+
+            averageWaitTime = Convert.ToDouble(s);
+            return averageWaitTime;
+        }
+
     }
 } 
  

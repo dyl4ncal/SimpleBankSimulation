@@ -1,16 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CPSC300A2.Simulation_Code;
-using System.Windows.Controls;
 
 namespace CPSC300A2.Simulation_Code
 {
     class Events
     {
         private static int customerNum = 1;
+        private static int totalCustomerCount = 0;
 
         //This method reads a single line of the data file and creates a new Node.
         public static Node ArrivalEvent(Node n)
@@ -33,6 +28,8 @@ namespace CPSC300A2.Simulation_Code
             else
             {
                 n.SetEventType("arrives");
+
+                totalCustomerCount++;
 
                 char[] f = { ' ', '\n', '\r' };
 
@@ -101,6 +98,12 @@ namespace CPSC300A2.Simulation_Code
                 return s;
             }
         }
+
+        public static int GetTotalCustomerCount()
+        {
+            return totalCustomerCount;
+        }
+
     }
 }
 
