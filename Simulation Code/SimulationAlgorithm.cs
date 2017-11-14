@@ -10,6 +10,7 @@ namespace CPSC300A2.Simulation_Code
     {
         private static string output;
         private static Queue customerLine;
+        private static Queue recordTable = new Queue();
 
         public static void PerformSimulation()
         {
@@ -35,7 +36,6 @@ namespace CPSC300A2.Simulation_Code
                 {
                     case "arrives":
                     {
-
                         qWasEmpty = customerLine.IsEmpty();
                         customerLine.Enqueue(n.GetArrivalTime(), n.GetCurrentTime(), n.GetServiceTime(), n.GetCustomerNumber(), n.GetEventType(), n.GetDepartureTime(), n.GetWaitTime());
 
@@ -50,7 +50,7 @@ namespace CPSC300A2.Simulation_Code
 
                         n = Events.ArrivalEvent(n);
 
-                        if (n.GetServiceTime() != 0)
+                        if (n.GetCustomerNumber() != 0)
                         {
                             n.SetWaitTime(waitTracker - n.GetArrivalTime());
 
@@ -68,6 +68,8 @@ namespace CPSC300A2.Simulation_Code
                         output = string.Concat(output, Events.LogCustomerFinished(n) + Environment.NewLine);
                        
                         customerLine.Dequeue();
+
+                            recordTable.Enqueue(n.GetArrivalTime(), n.GetCurrentTime(), n.GetServiceTime(), n.GetCustomerNumber(), n.GetEventType(), n.GetDepartureTime(), n.GetWaitTime());
 
                         if(!customerLine.IsEmpty())
                         {

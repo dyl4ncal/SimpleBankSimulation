@@ -12,16 +12,22 @@ namespace CPSC300A2.Simulation_Code
     {
         private static int customerNum = 1;
 
-
         //This method reads a single line of the data file and creates a new Node.
         public static Node ArrivalEvent(Node n)
         {
             String info = InputOutput.ReadDataLine();
+
             n = new Node();
 
             if (info == null)
             {
+                //Reset customer # counter after end of file.
                 customerNum = 1;
+                return n;
+            }
+            else if(info.Equals("Bad Input"))
+            {
+                Environment.Exit(1);
                 return n;
             }
             else
@@ -29,6 +35,7 @@ namespace CPSC300A2.Simulation_Code
                 n.SetEventType("arrives");
 
                 char[] f = { ' ', '\n', '\r' };
+
                 string[] dataToken = info.Split(f);
 
                 n.SetArrivalTime(Int32.Parse(dataToken[0]));

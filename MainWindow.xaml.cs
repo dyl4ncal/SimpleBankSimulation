@@ -46,18 +46,25 @@ namespace CPSC300A2
 
             fileTextBox.IsReadOnly = true;
             fileTextBox.Text = fileName;
-            file = new System.IO.StreamReader(@fileName);
+            try
+            {
+                file = new System.IO.StreamReader(@fileName);
+            }
+            catch(ArgumentException a)
+            {
+                fileTextBox.Text = "File Path Empty";
+            }
         }
 
         private void ExportClick(object sender, RoutedEventArgs e)
         {
             InputOutput.ExportResult(outputTextBox);
+            outputTextBox.AppendText(Environment.NewLine + "Output has been exported to Desktop!" + Environment.NewLine);
         }
 
         private void RunSimulationClick(object sender, RoutedEventArgs e)
         {
             outputTextBox.IsReadOnly = true;
-            //outputTextBox.Text = "";
             if (GetFile() == null)
             {
                 outputTextBox.Text = "Please Select a Data File to Run the Simulation With!";
